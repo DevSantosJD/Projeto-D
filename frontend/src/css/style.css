@@ -116,6 +116,10 @@ form{
     font-weight: 600;
 }
 
+.linkBtn {
+    color: #fff; 
+}
+
 .container p{
     font-size: 14.5px;
     margin: 15px 0;

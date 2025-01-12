@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="keywords" content="Quadro, tarefas">
+    <meta name="description" content="Página de tarefas do projeto, onde você poderá inserir novas tarefas, modifica-las ou até mesmo movê-las de colunas.">
+    <meta name="author" content="Elaine Cristina dos Santos">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/kanban.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <title>Simple Task</title>
+</head>
+<body>
+    <nav>
+        <div class="logo">
+          <a href="#">Simple<span>Task</span></a>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Sobre</a></li>
+          <li><a href="#">Serviços</a></li>
+          <li><a href="#">Contato</a></li>
+        </ul>
+        <div class="buttons">
+          <button class="modalBtn" onclick="openModal()">Adicionar tarefa</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Coluna 1 -->
+        <div class="column" task-column="1" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div class="head">
+                <span>A Fazer</span>
+            </div>
+            <div class="body">
+                <!-- Cards serão inseridos aqui dinamicamente -->
+            </div>
+        </div>
+
+        <!-- Coluna 2 -->
+        <div class="column" task-column="2" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div class="head">
+                <span>Em progresso</span>
+            </div>
+            <div class="body">
+                <!-- Cards serão inseridos aqui dinamicamente -->
+            </div>
+        </div>
+
+        <!-- Coluna 3 -->
+        <div class="column" task-column="3" ondrop="drop_handler(event);" ondragover="dragover_handler(event);">
+            <div class="head">
+                <span>Concluída</span>
+            </div>
+            <div class="body">
+                <!-- Cards serão inseridos aqui dinamicamente -->
+            </div>
+        </div>
+    </div>
+
+    <div id="modal">
+       <div class="box">
+            <div class="head">
+                <span id="createTaskTitle">Nova Tarefa</span>
+                <span id="editTaskTitle">Editar Tarefa</span>
+                <button onclick="closeModal()" class="material-symbols-outlined">
+                    close
+                </button>
+            </div>
+            <div class="form">
+                <input type="hidden" id="idInput">
+                <div class="form-group">
+                    <label for="title">Título da tarefa: </label>
+                    <input type="text" id="title" name="title" placeholder="Digite o título">
+                </div>
+                <div class="form-group">
+                    <label for="description">Descrição: </label>
+                    <textarea id="description" rows="4"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="priority">Prioridade: </label>
+                    <select id="priority">
+                        <option>Baixa</option>
+                        <option>Média</option>
+                        <option>Alta</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="column">Coluna</label>
+                    <select id="column">
+                        <option value="1">A fazer</option>
+                        <option value="2">Em progresso</option>
+                        <option value="3">Concluída</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="deadLine">Prazo</label>
+                    <input type="date" id="deadLine">
+                </div>
+                <button class="primary" onclick="createTask()" id="createTaskButton">Cadastrar tarefa</button>
+                <button class="primary" onclick="updateTask()" id="editTaskButton">Salvar alteração</button>
+            </div>
+       </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="../src/js/script.js"></script>
+</body>
+</html>
